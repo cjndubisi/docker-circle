@@ -9,13 +9,13 @@ jobs:
       # Start JSON Server container in the background
       - run:
           name: Start JSON Server
+          background: true
           command: |
             json-server db.json
 
       # Wait for JSON Server to be ready
       - run:
           name: Wait for JSON Server to start
-          background: true
           command: |
             until curl --output /dev/null --silent --head --fail http://localhost:3000; do
               sleep 1
@@ -29,7 +29,6 @@ jobs:
       # Run curl command to connect to JSON Server
       - run:
           name: Wait for JSON Server to start
-          background: true
           command: |
             until curl --output /dev/null --silent --head --fail http://localhost:3000; do
               sleep 1
