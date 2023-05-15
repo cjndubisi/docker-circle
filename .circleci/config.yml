@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Start JSON Server
           command: |
-            json-server --watch db.json
+            williamyeh/json-server --watch db.json
 
       # Wait for JSON Server to be ready
       - run:
