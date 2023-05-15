@@ -23,6 +23,8 @@ jobs:
             done
 
   front-end:
+    docker:
+      - image: cimg/node:20.1.0
     steps:
       - checkout
       # Run curl command to connect to JSON Server
