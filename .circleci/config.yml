@@ -2,9 +2,8 @@ version: 2.1
 
 jobs:
   build:
-    docker:
-      - image: williamyeh/json-server
-      - image: cimg/node:20.1.0
+    machine:
+      image: ubuntu-2204:2022.04.2
 
     steps:
       # Start JSON Server container in the background
@@ -12,7 +11,11 @@ jobs:
           name: Start JSON Server
           background: true
           command: |
-            json-server db.json
+            docker run -d \
+              -p 3000:3000 -v `pwd`:/data \
+              --name json-server \
+              williamyeh/json-server \
+              --watch db.json
 
       # Wait for JSON Server to be ready
       - run:
