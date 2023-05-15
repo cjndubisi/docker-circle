@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: williamyeh/json-server
+      - image: cimg/node:20.1.0
 
     steps:
       # Start JSON Server container in the background
