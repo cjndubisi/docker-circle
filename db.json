@@ -1,0 +1,44 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "json-server",
+            "author": "typicode"
+        },
+        {
+            "id": 2,
+            "title": "RESTful APIs",
+            "author": "user123"
+        },
+        {
+            "id": 3,
+            "title": "Web Development",
+            "author": "webdev456"
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "body": "some comment",
+            "postId": 1
+        },
+        {
+            "id": 2,
+            "body": "another comment",
+            "postId": 2
+        },
+        {
+            "id": 3,
+            "body": "third comment",
+            "postId": 2
+        },
+        {
+            "id": 4,
+            "body": "more comments",
+            "postId": 3
+        }
+    ],
+    "profile": {
+        "name": "typicode"
+    }
+}

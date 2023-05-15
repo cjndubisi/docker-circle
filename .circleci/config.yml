@@ -1,0 +1,42 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+      - image: williamyeh/json-server
+
+    steps:
+      # Start JSON Server container in the background
+      - run:
+          name: Start JSON Server
+          command: |
+            json-server --watch db.json
+
+      # Wait for JSON Server to be ready
+      - run:
+          name: Wait for JSON Server to start
+          background: true
+          command: |
+            until curl --output /dev/null --silent --head --fail http://localhost:3000; do
+              sleep 1
+            done
+
+  front-end:
+    steps:
+      - checkout
+      # Run curl command to connect to JSON Server
+      - run:
+          name: Connect to JSON Server
+          command: |
+            curl http://localhost:3000/posts/1
+
+workflows:
+  test_and_distribute:
+    jobs:
+      - build
+      - front-end:
+          requires:
+            - build
+
+
