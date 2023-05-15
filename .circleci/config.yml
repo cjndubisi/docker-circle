@@ -3,7 +3,6 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:10
       - image: williamyeh/json-server
 
     steps:
@@ -11,7 +10,7 @@ jobs:
       - run:
           name: Start JSON Server
           command: |
-            williamyeh/json-server --watch db.json
+            json-server db.json
 
       # Wait for JSON Server to be ready
       - run:
